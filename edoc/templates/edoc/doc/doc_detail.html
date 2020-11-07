@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Display doc.name and doc.abbreviation -->
+<h2>{{ doc.title }} </h2>
+<p>Source: {{ doc.source.name }} </p>
+
+<p> Destinations: </p>
+<ul>
+{% for destination in doc.destinations.all %}
+  <li>{{ destination.name }} </li>
+{% endfor %}
+</ul>
+
+{% if doc.doc_file %}
+  <p><a href="{{ doc.doc_file.url }}" target='_blank' >Download file</a></p>
+{% endif %}
+
+<!-- Display 'Edit' and 'Delete' buttons -->
+<p>
+  <a href="{% url 'edoc:doc_update' doc.pk %}" class="btn btn-primary"> Update </a> 
+  <a href="{% url 'edoc:doc_delete' doc.pk %}" class="btn btn-danger"> Delete </a>
+</p>
+<hr />
+
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Display list of all companys -->
+{% for company in company_list %}
+<div class="card bg-light mb-3" style="max-width: 100%;">
+  <div class="card-header">{{ company.abbreviation }}</div>
+  <div class="card-body">
+    <p class="card-text"> {{ company.name }} </p>
+    <a href="{{ company.get_absolute_url }}">Detail</a>
+  </div>
+</div>
+{% empty %}
+<p>No Company added Yet</p>
+{% endfor %}
+
+
+<!-- Display pagination only if page_obj have some value -->
+{% if page_obj %}
+{% include "edoc/company/pagination.html" with page=page_obj %}
+{% endif %}
+
+
+{% endblock %}

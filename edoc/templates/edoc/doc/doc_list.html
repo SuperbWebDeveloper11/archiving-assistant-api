@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Display list of all docs -->
+{% for doc in doc_list %}
+<div class="card bg-light mb-3" style="max-width: 100%;">
+  <div class="card-header">{{ doc.title }}</div>
+  <div class="card-body">
+    <a href="{{ doc.get_absolute_url }}">Detail</a>
+  </div>
+</div>
+{% empty %}
+<p>No doc added Yet</p>
+{% endfor %}
+
+
+<!-- Display pagination only if page_obj have some value -->
+{% if page_obj %}
+{% include "edoc/doc/pagination.html" with page=page_obj %}
+{% endif %}
+
+
+{% endblock %}

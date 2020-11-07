@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Display company.name and company.abbreviation -->
+<h2>{{ company.name }} - Abbreviated {{ company.abbreviation }} </h2>
+
+<!-- Display 'Edit' and 'Delete' buttons -->
+<p>
+  <a href="{% url 'edoc:company_update' company.pk %}" class="btn btn-primary"> Update </a> 
+  <a href="{% url 'edoc:company_delete' company.pk %}" class="btn btn-danger"> Delete </a>
+</p>
+<hr />
+
+
+
+{% endblock %}
